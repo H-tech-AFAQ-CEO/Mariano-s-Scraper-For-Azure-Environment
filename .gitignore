@@ -1,0 +1,5 @@
+data/
+doctor_out/
+__pycache__/
+*.pyc
+.env

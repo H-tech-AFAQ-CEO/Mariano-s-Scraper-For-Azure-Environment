@@ -1,0 +1,79 @@
+# Operational settings. Everything here can be overridden per environment by editing this file;
+# secrets are NEVER stored here (see README: environment variables / Azure secrets).
+retailer: marianos
+base_url: https://www.marianos.com
+
+pacing:
+  min_delay_s: 2.5          # random delay between page loads
+  max_delay_s: 6.0
+  slow_page_s: 20           # a page slower than this doubles pacing (adaptive back-off)
+  max_multiplier: 8
+
+retries:
+  attempts: 4
+  base_delay_s: 4
+
+block:
+  cooldown_s: 300           # pause after a challenge/403/429 before one more attempt
+  max_blocks_per_run: 3     # then the run stops (checkpoint kept, resumable)
+
+browser:
+  headless: true
+  nav_timeout_ms: 45000
+  locale: en-US
+  timezone: America/Chicago
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+  viewport: {width: 1366, height: 900}
+
+crawl:
+  max_pages_per_unit: 150
+  max_depth: 2                      # category -> subcategory -> sub-subcategory
+  max_units_per_category: 400
+  declared_total_min_ratio: 0.95    # collected / "N results" shown by the site
+  lazy_scroll_rounds: 40
+  lazy_stable_rounds: 3
+  declared_total_regex: '([\d,]+)\s+(?:results|items|products)\b'
+  no_results_regex: "no results|0 results|couldn.t find|no products (?:found|available)"
+
+resume:
+  max_age_hours: 36                 # an unfinished run younger than this is continued, not restarted
+
+validation:
+  min_total_records: 500
+  min_unit_records_first_run: 1     # without a baseline every unit must have >= this
+  yield_min_ratio: 0.70             # category raw yield vs last successful run
+  total_yield_min_ratio: 0.80
+  max_failed_units: 0
+  max_slow_page_fraction: 0.25
+  canary_min_pass_ratio: 0.80
+  completeness_min:                 # fraction of records that must have the field
+    product_title: 0.995
+    url: 0.995
+    image_url: 0.95
+    price_any: 0.98                 # regular_price or sale_price
+    upc: 0.90
+    weight: 0.70
+  fail_on_any_store_mismatch: true
+
+storage:
+  backend: local                    # local | azure  (override: MARIANOS_STORAGE)
+  local_root: ./data
+  azure_container: marianos-scraper # account via AZURE_STORAGE_ACCOUNT_URL (managed identity) or AZURE_STORAGE_CONNECTION_STRING
+
+publish:
+  keep_history: 8
+
+private_label_brands:
+  - Kroger
+  - Private Selection
+  - Simple Truth
+  - Simple Truth Organic
+  - Heritage Farm
+  - Comforts
+  - Big K
+  - Check This Out
+  - Home Sense
+  - Smart Way
+  - Mariano's
+  - Home Chef
+  - Pure Pantry

@@ -1,0 +1,63 @@
+# All DOM selectors live here so site changes are fixed in config, not code.
+# Each list is tried in order; first match wins. These are BEST-KNOWLEDGE defaults for Kroger-platform
+# sites and MUST be confirmed on the live site with:  python -m marianos.cli doctor --location <id>
+store_banner:
+  - '[data-testid="CurrentModality-button"]'
+  - '[data-testid*="modality"]'
+  - 'header [aria-label*="store" i]'
+store_logo:
+  - 'header img[alt*="Mariano" i]'
+  - 'header a[href="/"] img'
+card:
+  - '[data-testid="auto-grid-cell"]'
+  - 'div[data-testid^="product-card"]'
+  - 'div[class*="ProductCard"]'
+card_link: ['a[href*="/p/"]']
+title:
+  - '[data-testid="cart-page-item-description"]'
+  - '[data-testid="product-title"]'
+  - 'a[href*="/p/"] span'
+  - 'a[href*="/p/"]'
+size:
+  - '[data-testid="cart-page-item-sizing"]'
+  - '[data-testid*="sizing"]'
+  - '[data-testid*="size"]'
+price_current:
+  - '[data-testid="cart-page-item-unit-price"]'
+  - '[data-testid*="unit-price"]'
+  - 'mark'
+  - '[data-testid*="price"]'
+price_original:
+  - '[data-testid*="regular-price"]'
+  - 's'
+  - 'del'
+  - '[class*="trike"]'
+ppm:
+  - '[data-testid*="price-per"]'
+  - '[data-testid*="unit-price-per"]'
+  - '[data-testid="cart-page-item-unit-price-per"]'
+promo:
+  - '[data-testid*="promo"]'
+  - '[data-testid*="deal"]'
+  - '[class*="Promo"]'
+  - '[class*="promotion"]'
+promo_digital:                     # elements that are digital coupons by nature (clip/add buttons, coupon chips)
+  - '[data-testid*="coupon"]'
+  - '[data-testid*="clip"]'
+  - 'button[aria-label*="clip" i]'
+brand: ['[data-testid*="brand"]']
+next_page:
+  - 'a[rel="next"]'
+  - '[data-testid*="pagination-next"]'
+  - 'button[aria-label*="next" i]'
+load_more:
+  - 'button:has-text("Load more")'     # Playwright selector (driver only)
+results_count: ['main [data-testid*="result"]', 'main [data-testid*="count"]']
+subcategory_links:
+  - 'main a[href*="/pl/"]'
+  - 'a[href*="/pl/"]'
+exclude_ancestors: ['header', 'footer']
+subcategory_skip_names: ['view all', 'see all', 'all', 'sale', 'new']
+coupon_card:
+  - '[data-testid*="coupon-card"]'
+  - 'div[class*="CouponCard"]'
