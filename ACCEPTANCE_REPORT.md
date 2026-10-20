@@ -20,5 +20,12 @@ This report documents the verification status of all test suites, acceptance req
 | Lock Overlap Prevention | `test_lock_prevents_overlap` | 2025-02-17 | **PASSED** | [storage.py](file:///C:/Users/Afaq/Desktop/marianos-scraper/src/marianos/storage.py) |
 | Real HTML Fixtures | `TestFixtureRegression` | 2025-02-17 | **PASSED** | [tests/fixtures/](file:///C:/Users/Afaq/Desktop/marianos-scraper/tests/fixtures/) |
 
+## Category Count Clarification
+
+`config/categories.csv` (derived from `Marianos_Category_URLs.csv`) contains **28 data rows** (29 lines including the header row). The categories are: Coupons, Produce, Meat, Seafood, Deli, Bakery, Floral, Grocery, Dairy, Frozen, Natural Organic, Beverages, Breakfast, Coffee, Candy, Beer Wine Liquor, Health, Personal Care, Beauty, Baby, Household, Kitchen Dining, Pet Supplies, Candles Home Fragrances, Batteries, Light Bulbs, School Office, Hardware Home Improvement. Any reference to "29 categories" elsewhere is a miscount of the header row; the correct count is 28 scrapable categories.
+
 ## Live Site Status Note
-- **Live Target (`marianos.com`)**: Automated access is actively blocked at the TCP/TLS connection layer (`RemoteDisconnected` / `ERR_CONNECTION_RESET`) by the retailer's anti-bot infrastructure (Akamai/WAF). Per instructions and Hard Rule 6, no evasion or stealth tooling has been added; execution runs against robust synthetic test fixtures and fakesite harness.
+
+- **Test dates (2025-02-17)**: These dates reflect when the offline unit/end-to-end test suite was last executed against synthetic fixtures. They are **not** live-site test dates.
+- **Live Target (`marianos.com`)**: Automated access is actively blocked at the TCP/TLS connection layer (`RemoteDisconnected` / `ERR_CONNECTION_RESET`) by the retailer's anti-bot infrastructure (Akamai/WAF) from this build environment. Per instructions and by design, no evasion or stealth tooling has been added. Execution runs against robust synthetic test fixtures and fakesite harness only. Live validation, store-selection flow, Azure deployment, and ≥500-product dataset generation require an authorized network where marianos.com is reachable.
+
