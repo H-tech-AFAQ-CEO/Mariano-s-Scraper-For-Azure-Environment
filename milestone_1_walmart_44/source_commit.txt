@@ -1,0 +1,62 @@
+Source Commit Evidence — Mariano's Scraper Project (NOT Walmart #44)
+====================================================================
+
+IMPORTANT DISCREPANCY NOTICE:
+-----------------------------
+The project present in this working directory is a Mariano's grocery catalog
+scraper for Microsoft Azure, NOT a Walmart #44 product collection project.
+There is no Walmart #44 project, no Walmart source code, and no Walmart
+configuration in this repository. All commit information below refers to the
+Mariano's scraper project that is actually present.
+
+Repository URL: https://github.com/H-tech-AFAQ-CEO/Mariano-s-Scraper-For-Azure-Environment.git
+Current branch: main
+Exact current commit SHA: 019cd63cb1f2dc4029bff1042f7849e1a47ea440
+Commit date: 2026-10-19 22:28:28 -0700
+Commit message: Add demo video guide script and shot list
+
+Previous commits:
+  9fffa8c12c150e8e880d69fee3d08cc46de7c6ca  2026-10-19 22:23:36 -0700  Clarify category count (28 data rows) and offline test dates (2025-02-17) in acceptance report
+  1f043f20a04b10ff3d9caa56541aee924f794cfd  2026-10-18 08:05:53 -0700  Initial commit: Mariano's scraper for Azure - full source code, config, tests, infra, docs
+
+Working-tree status: Clean (no uncommitted changes; one untracked file: .idea/vcs.xml)
+Commit independently identifiable from Git metadata: Yes (full SHA present in .git)
+
+Files relevant to the scraper implementation (current commit):
+  src/marianos/__init__.py       - Version (__version__ = "1.0.0")
+  src/marianos/cli.py            - CLI entry point (run, status, doctor, discover, verify-store, reset)
+  src/marianos/common.py         - Exceptions, structured logging, retry helper
+  src/marianos/config.py         - Configuration loading (locations, categories, selectors, settings)
+  src/marianos/deals.py          - Volume vs digital deal classification
+  src/marianos/driver.py         - Playwright Chromium driver (store select, fetch, lazy load)
+  src/marianos/extract.py        - Pure-function DOM extraction (listing, PDP, subcategories, records)
+  src/marianos/guards.py         - Silent-block detection, store matching
+  src/marianos/report.py         - Run report / evidence pack builder
+  src/marianos/runner.py         - Run orchestration (lock, store verify, canaries, discover, crawl, validate, publish)
+  src/marianos/schema.py         - Output schema: exact 22-field order, empty-string policy, PPM, approx-weight
+  src/marianos/storage.py        - Storage abstraction (LocalStorage, AzureBlobStorage, locking)
+  src/marianos/validate.py       - Run-level validation (completeness, yield, canaries, schema)
+  src/marianos/check_output.py   - Independent acceptance checker for dataset JSON
+
+Configuration files:
+  config/categories.csv          - 28 category rows (derived from Marianos_Category_URLs.csv)
+  config/locations.yaml          - Location template (no live store configured)
+  config/selectors.yaml          - CSS selectors (best-knowledge Kroger-platform defaults, require live tuning)
+  config/settings.yaml           - Pacing, retries, block, browser, crawl, validation, publish settings
+
+Infrastructure:
+  infra/main.bicep               - Azure Container Apps Job Bicep template (twice-weekly cron)
+
+Documentation:
+  README.md                      - Setup, operation, Azure deployment, cost estimate, compliance
+  docs/WALKTHROUGH.md            - Step-by-step operational guide
+  docs/CONTEST_EVIDENCE.md       - Mapping of 10 required contest evidence items to code/files
+  docs/DEMO_VIDEO_GUIDE.md       - Demo video script and shot list (added in current commit)
+  ACCEPTANCE_REPORT.md           - Test summary and live-site status note
+
+Tests:
+  tests/test_scraper.py          - 15 offline unit/end-to-end tests (synthetic fakesite, no live site)
+  tests/fakesite.py              - Synthetic fake Mariano's site + driver for offline tests
+  tests/fixtures/                - 5 real-HTML fixture files for extraction regression
+
+Walmart #44: Not present. No Walmart code, configuration, selectors, or store #44 configuration exists in this repository.

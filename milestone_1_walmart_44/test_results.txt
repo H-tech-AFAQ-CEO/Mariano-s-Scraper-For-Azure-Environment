@@ -1,0 +1,62 @@
+Test Results — Mariano's Scraper Project
+========================================
+
+IMPORTANT DISCREPANCY NOTICE:
+-----------------------------
+Tests below are for the Mariano's scraper project actually present.
+There are no Walmart #44 tests. All tests use synthetic fixtures and a fake
+site; none represent live execution against marianos.com.
+
+Exact command executed:
+  $env:PYTHONPATH="src"; python -m unittest discover -s tests -v
+
+Working directory: C:\Users\Afaq\Desktop\marianos-scraper
+Python version: 3.12.10
+Exit code: 0
+
+Test summary:
+  Ran 15 tests
+  Passed: 15
+  Failed: 0
+  Skipped: 0
+  Not run: 0
+  Result: OK
+
+Actual test output (abridged):
+  test_blocked_response_stops_run_resumably ... ok
+  test_failed_run_never_replaces_good_data ... ok
+  test_happy_path_and_output ... ok
+  test_interruption_resumes_without_refetching_done_pages ... ok
+  test_lock_prevents_overlap ... ok
+  test_repeat_run_is_stable_and_uses_canaries ... ok
+  test_store_mismatch_aborts_and_publishes_nothing ... ok
+  test_unverifiable_store_config_fails ... ok
+  test_yield_drop_vs_baseline_rejected ... ok
+  test_unknown_markup_still_parses ... ok
+  test_with_page ... ok
+  test_fixtures ... ok
+  test_approx ... ok
+  test_deals_brief_examples ... ok
+  test_field_order_and_blanks ... ok
+  Ran 15 tests in 9.927s
+  OK
+
+Mock / fixture / synthetic usage:
+  - ALL 15 tests use mocks, fixtures, or synthetic responses.
+  - tests/fakesite.py provides a synthetic FakeSite + FakeDriver (not marianos.com).
+  - tests/fixtures/ contains 5 static HTML fixture files (listing_deal.html, pdp.html,
+    department.html, empty_results.html, coupons.html) for extraction regression.
+  - No test makes a real HTTP request to marianos.com or any live retailer.
+  - No test verifies live connectivity, real store verification, or production collection.
+
+Genuine product dataset from intended Walmart source: N/A (not a Walmart project).
+  - No dataset exists in the repository.
+  - No previous live execution is supported by verifiable saved evidence.
+  - The 500-genuine-product demonstration belongs to a later milestone and cannot be
+    fabricated from offline tests.
+
+Offline test success does NOT establish:
+  - Live connectivity to marianos.com
+  - Real store verification
+  - Production collection
+  - Azure deployment acceptance
