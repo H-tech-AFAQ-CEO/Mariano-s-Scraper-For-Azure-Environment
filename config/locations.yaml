@@ -1,12 +1,12 @@
 # One entry per store. Add a location = add a block here (no code change).
 locations:
-  - id: chicago-roosevelt          # EXAMPLE - replace with the assigned store
+  - id: vernon-hills
     enabled: true
-    zipcode: "60607"
-    store_id: ""                   # Kroger-family location id, if known (used for cookie verification)
-    store_details_url: ""          # e.g. https://www.marianos.com/stores/details/<division>/<store-number>
-    store_name: ""                 # fallbacks used only when the page banner does not expose them
-    store_location: ""
+    zipcode: "60061"
+    store_id: ""
+    store_details_url: ""
+    store_name: "Mariano's Vernon Hills"
+    store_location: "1720 N Milwaukee Ave, Vernon Hills, IL 60061"
     store_logo: ""
-    banner_must_contain: []        # ALL must appear in the header store banner, e.g. ["Roosevelt"]. REQUIRED before production use.
-    canaries: []                   # optional fixed canary product URLs (the scraper also auto-derives canaries from the last good run)
+    banner_must_contain: ["Vernon Hills", "60061"]
+    canaries: []
